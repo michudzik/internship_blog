@@ -3,7 +3,11 @@
 <ul>
   <% @authors.each do |author| %>
     <li>
-      <%= link_to "#{author.name} #{author.surname} - #{author.age}", author_path(id: author.id) %>
+      <%= link_to author.full_name, author_path(id: author.id) %>
+      <%= link_to 'Edit', edit_author_path(id: author.id) %>
+      <%= link_to 'Delete', author_path(id: author.id), method: :delete %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to 'New', new_author_path %>
