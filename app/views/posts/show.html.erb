@@ -7,4 +7,18 @@
   <%= link_to @post.author.full_name, author_path(@post.author_id) %>
 </p>
 
+<% if @post.comments.any? %>
+  <table>
+    <% @post.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.commentator.name %></td>
+        <td><%= comment.content %></td>
+        <td><%= link_to 'Delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<hr/>
+<%= render 'comments/form', object: @comment, locals: { post_id: @post.id } %>
+
 <%= link_to 'Back', posts_path %>

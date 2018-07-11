@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   #get '/author/new',    to: 'authors#new',    as: :new_author
   resources :authors
   resources :posts
+  resources :comments, only: [:create, :destroy]
 end
