@@ -1,13 +1,13 @@
 <h1>Index of Authors</h1>
 
-<ul>
+<table>
   <% @authors.each do |author| %>
-    <li>
-      <%= link_to author.full_name, author_path(id: author.id) %>
-      <%= link_to 'Edit', edit_author_path(id: author.id) %>
-      <%= link_to 'Delete', author_path(id: author.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
+    <tr>
+      <td><%= link_to author.full_name, author_path(id: author.id) %></td>
+      <td><%= link_to 'Edit', edit_author_path(id: author.id) %></td>
+      <td><%= link_to 'Delete', author_path(id: author.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
   <% end %>
-</ul>
-
+</table>
+<hr/>
 <%= link_to 'New', new_author_path %>

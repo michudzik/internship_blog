@@ -1,0 +1,10 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+<p><%= link_to 'Edit', edit_post_path(@post.id) %></p>
+
+<h2>Author info:</h2>
+<p>
+  <%= link_to @post.author.full_name, author_path(@post.author_id) %>
+</p>
+
+<%= link_to 'Back', posts_path %>

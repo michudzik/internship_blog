@@ -1,0 +1,27 @@
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br/>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, size: '24x5' %>
+  <br/>
+
+  <%= f.label :author_id %>
+  <%= f.select :author_id do %>
+    <% @authors.each do |author| %>
+      <%= content_tag(:option, author.first, value: author.last) %>
+    <% end %>
+  <% end %>
+  <br/>
+
+  <%= f.submit locals[:button_text] %>
+<% end %>
