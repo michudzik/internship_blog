@@ -12,6 +12,5 @@ class Post < ActiveRecord::Base
   belongs_to :author #=> One one or one many
  # has_many :author_posts
  # has_many :authors, through: :author_posts
-  has_many :comment_commentators
-  has_many :comments, through: :comment_commentator
+  has_many :comments
 end
