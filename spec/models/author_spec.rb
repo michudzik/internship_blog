@@ -17,8 +17,8 @@ RSpec.describe Author, type: :model do
   end
   
   describe 'scopes' do
-    let(:young_author)  { Author.create(name: 'test', surname: 'test', age: 15) }
-    let(:old_author)    { Author.create(name: 'test', surname: 'test', age: 55) }
+    let(:young_author)  { create(:author, age: 15) }
+    let(:old_author)    { create(:author, age: 55) }
 
     it 'should have old scope' do
       expect(Author.old).to include(old_author)
@@ -32,7 +32,7 @@ RSpec.describe Author, type: :model do
   end
   
   describe 'callbacks' do
-    let(:author) { Author.create(name: 'test', surname: 'test') }
+    let(:author) { create(:author, age: nil) }
 
     it 'should set age to 25 if non was given' do
       expect(author.age).to eq(25)
@@ -44,10 +44,14 @@ RSpec.describe Author, type: :model do
   end
   
   describe '#fullname' do
-    let(:author) { Author.new(name: 'name', surname: 'surname') }
+
+    # create(:author) - zapisze obiekt w bazie danych
+    # build(:author) - nie zapisze w bazie danych
+
+    let(:author) { build(:author) }
 
     it 'should return author\'s fullname' do
-     expect(author.full_name).to eq('name surname')
+     expect(author.full_name).to eq("#{author.name} #{author.surname}")
     end
   end
 
