@@ -5,22 +5,9 @@ RSpec.describe Author, type: :model do
   describe 'validations' do 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:surname) }
-
-    it 'should require age to be an integer' do
-      expect(Author.new(name: 'name', surname: 'surname', age: 1.5)).not_to be_valid
-      expect(Author.new(name: 'name', surname: 'surname', age: 1)).to be_valid
-    end
-
-    it 'should require age to be a postivie integer' do
-      expect(Author.new(name: 'name', surname: 'surname', age: -1)).not_to be_valid
-    end
-
-    it 'should allow age to be nil' do
-      author = Author.new(name: 'name', surname: 'surname')
-      author.age = nil
-
-      expect(author).to be_valid
-    end
+    it { should validate_numericality_of(:age).only_integer }
+    it { should validate_numericality_of(:age).allow_nil }
+    it { should validate_numericality_of(:age).is_greater_than(0) }
   end
 
   describe 'attributes' do
@@ -30,18 +17,24 @@ RSpec.describe Author, type: :model do
   end
   
   describe 'scopes' do
-    it 'should have old scope' do
-      young_author = Author.create(name: 'test', surname: 'test', age: 25)
-      old_author = Author.create(name: 'test', surname: 'test', age: 55)
+    let(:young_author)  { Author.create(name: 'test', surname: 'test', age: 15) }
+    let(:old_author)    { Author.create(name: 'test', surname: 'test', age: 55) }
 
+    it 'should have old scope' do
       expect(Author.old).to include(old_author)
       expect(Author.old).not_to include(young_author)
+    end
+
+    it 'should have young scope' do
+      expect(Author.young).not_to include(old_author)
+      expect(Author.young).to include(young_author)
     end
   end
   
   describe 'callbacks' do
+    let(:author) { Author.create(name: 'test', surname: 'test') }
+
     it 'should set age to 25 if non was given' do
-      author = Author.create(name: 'test', surname: 'test')
       expect(author.age).to eq(25)
     end
   end
@@ -51,8 +44,9 @@ RSpec.describe Author, type: :model do
   end
   
   describe '#fullname' do
+    let(:author) { Author.new(name: 'name', surname: 'surname') }
+
     it 'should return author\'s fullname' do
-     author = Author.new(name: 'name', surname: 'surname')
      expect(author.full_name).to eq('name surname')
     end
   end
