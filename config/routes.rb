@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :authors
   resources :posts
   resources :comments, only: [:create, :destroy]
+  resources :commentators, only: [:index, :new, :create, :destroy]
 end
