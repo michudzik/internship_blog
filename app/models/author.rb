@@ -5,7 +5,7 @@ class Author < ActiveRecord::Base
   validates :age,       numericality: { only_integer: true, greater_than: 0, allow_nil: true }
 
   scope :old, -> { where('age > 30') }
-  scope :young, -> { where('age < 20')}
+  scope :young, -> { where('age < 20') }
 
   before_create :default_age
 
