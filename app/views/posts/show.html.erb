@@ -28,6 +28,6 @@
 <hr/>
 
 <h3>Add comment</h3>
-<%= render 'comments/form', object: @comment, locals: { post_id: @post.id } %>
+<%= render 'comments/form', object: @comment, locals: { post_id: @post.id, commentators: @commentators } %>
 <hr/>
 <%= link_to 'Back', posts_path %>

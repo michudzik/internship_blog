@@ -8,7 +8,11 @@
 
 <%= form_for @comment do |f| %>
   <%= f.label :commentator_id %>
-  <%= f.number_field :commentator_id %>
+   <%= f.select :commentator_id do %>
+    <% locals[:commentators].each do |commentator| %>
+      <%= content_tag(:option, commentator.name, value: commentator.id) %>
+    <% end %>
+  <% end %>
   <br/>
 
   <%= f.label :content %>
