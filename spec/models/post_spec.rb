@@ -18,8 +18,8 @@ RSpec.describe Post, type: :model do
   end
   
   describe 'scopes' do
-    let(:early_post) { create(:post) }
-    let(:old_post) { create(:post, title: 'title1') }
+    let(:early_post)  { create(:post) }
+    let(:old_post)    { create(:post, title: 'title1') }
 
     it 'should have old scope' do 
       old_post.update(created_at: 41.minutes.ago)
