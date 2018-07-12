@@ -1,54 +1,60 @@
 require 'rails_helper'
 
 RSpec.describe Author, type: :model do
+
+  describe 'validations' do 
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:surname) }
+
+    it 'should require age to be an integer' do
+      expect(Author.new(name: 'name', surname: 'surname', age: 1.5)).not_to be_valid
+      expect(Author.new(name: 'name', surname: 'surname', age: 1)).to be_valid
+    end
+
+    it 'should require age to be a postivie integer' do
+      expect(Author.new(name: 'name', surname: 'surname', age: -1)).not_to be_valid
+    end
+
+    it 'should allow age to be nil' do
+      author = Author.new(name: 'name', surname: 'surname')
+      author.age = nil
+
+      expect(author).to be_valid
+    end
+  end
+
+  describe 'attributes' do
+    it 'should have proper attributes' do
+      expect(subject.attributes).to include('name', 'surname', 'age')
+    end
+  end
   
-  it 'should have proper attributes' do
-    expect(subject.attributes).to include('name', 'surname', 'age')
+  describe 'scopes' do
+    it 'should have old scope' do
+      young_author = Author.create(name: 'test', surname: 'test', age: 25)
+      old_author = Author.create(name: 'test', surname: 'test', age: 55)
+
+      expect(Author.old).to include(old_author)
+      expect(Author.old).not_to include(young_author)
+    end
   end
-
-  it 'should require name and surname presence' do
-    expect(Author.new).not_to be_valid
-    expect(Author.new(name: 'test')).not_to be_valid
-    expect(Author.new(name: 'test', surname: 'test')).to be_valid
+  
+  describe 'callbacks' do
+    it 'should set age to 25 if non was given' do
+      author = Author.create(name: 'test', surname: 'test')
+      expect(author.age).to eq(25)
+    end
   end
-
-  it 'should have old scope' do
-    young_author = Author.create(name: 'test', surname: 'test', age: 25)
-    old_author = Author.create(name: 'test', surname: 'test', age: 55)
-
-    expect(Author.old).to include(old_author)
-    expect(Author.old).not_to include(young_author)
+  
+  describe 'relations' do
+    it { should have_many(:posts) }
   end
-
-  it 'should set age to 25 if non was given' do
-    author = Author.create(name: 'test', surname: 'test')
-    expect(author.age).to eq(25)
-  end
-
-  it 'should have many posts' do
-    t = Author.reflect_on_association(:posts)
-    expect(t.macro).to eq(:has_many)
-  end
-
-  it 'should have working #fullname method' do
+  
+  describe '#fullname' do
+    it 'should return author\'s fullname' do
      author = Author.new(name: 'name', surname: 'surname')
      expect(author.full_name).to eq('name surname')
-  end
-
-  it 'should require age to be an integer' do
-    expect(Author.new(name: 'name', surname: 'surname', age: 1.5)).not_to be_valid
-    expect(Author.new(name: 'name', surname: 'surname', age: 1)).to be_valid
-  end
-
-  it 'should require age to be a postivie integer' do
-    expect(Author.new(name: 'name', surname: 'surname', age: -1)).not_to be_valid
-  end
-
-  it 'should allow age to be nil' do
-    author = Author.new(name: 'name', surname: 'surname')
-    author.age = nil
-
-    expect(author).to be_valid
+    end
   end
 
 end
