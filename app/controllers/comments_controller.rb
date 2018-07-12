@@ -11,10 +11,11 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
+    post_id = comment.post_id
     if comment.destroy
-      redirect_to post_url(comment.post_id), notice: 'Comment deleted'
+      redirect_to post_url(post_id), notice: 'Comment deleted'
     else
-      redirect_to post_url(comment.post_id), alert: 'Could not delete the comment'
+      redirect_to post_url(post_id), alert: 'Could not delete the comment'
     end
   end
 
