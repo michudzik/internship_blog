@@ -8,9 +8,8 @@
   Updated at: <%= @author.updated_at %>
 </p>
 
-
-<h2>Posts</h2>
 <% if @posts.any? %>
+  <h2>Posts</h2>
   <table>
     <% @posts.each do |post| %>
       <tr>
@@ -21,4 +20,5 @@
     <% end %>
   <table>
 <% end %>
+<hr/>
 <%= link_to 'Back', authors_path %>

@@ -6,7 +6,7 @@
 <p>
   <%= link_to @post.author.full_name, author_path(@post.author_id) %>
 </p>
-
+<hr/>
 <% if @post.comments.any? %>
   <h2>Comment section</h2>
   <table>
@@ -29,5 +29,5 @@
 
 <h3>Add comment</h3>
 <%= render 'comments/form', object: @comment, locals: { post_id: @post.id } %>
-
+<hr/>
 <%= link_to 'Back', posts_path %>
