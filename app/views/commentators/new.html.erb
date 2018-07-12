@@ -1,0 +1,10 @@
+<h1>Add commentator</h1>
+
+<%= form_for @commentator do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>
+<hr/>
+<%= link_to 'Back', commentators_path %>

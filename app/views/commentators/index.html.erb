@@ -1,0 +1,13 @@
+<h1>Commentators</h1>
+
+<table>
+  <% @commentators.each do |commentator| %>
+    <tr>
+      <td><%= commentator.name %></td>
+      <td><%= link_to 'Delete', commentator_path(commentator.id), method: :delete , data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<hr/>
+
+<%= link_to "New", new_commentator_path %>
