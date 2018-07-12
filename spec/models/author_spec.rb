@@ -35,4 +35,20 @@ RSpec.describe Author, type: :model do
      expect(author.full_name).to eq('name surname')
   end
 
+  it 'should require age to be an integer' do
+    expect(Author.new(name: 'name', surname: 'surname', age: 1.5)).not_to be_valid
+    expect(Author.new(name: 'name', surname: 'surname', age: 1)).to be_valid
+  end
+
+  it 'should require age to be a postivie integer' do
+    expect(Author.new(name: 'name', surname: 'surname', age: -1)).not_to be_valid
+  end
+
+  it 'should allow age to be nil' do
+    author = Author.new(name: 'name', surname: 'surname')
+    author.age = nil
+
+    expect(author).to be_valid
+  end
+
 end
