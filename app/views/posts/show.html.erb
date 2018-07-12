@@ -8,7 +8,14 @@
 </p>
 
 <% if @post.comments.any? %>
+  <h2>Comment section</h2>
   <table>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
     <% @post.comments.each do |comment| %>
       <tr>
         <td><%= comment.commentator.name %></td>
@@ -19,6 +26,8 @@
   </table>
 <% end %>
 <hr/>
+
+<h3>Add comment</h3>
 <%= render 'comments/form', object: @comment, locals: { post_id: @post.id } %>
 
 <%= link_to 'Back', posts_path %>
