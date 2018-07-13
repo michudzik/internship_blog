@@ -6,8 +6,8 @@
   HAML - silnik templatowy - pisanie htmla z użyciem railsów
   gem 
 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to 'Blog', root_path, class: 'navbar-brand' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,7 +25,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Author.all.each do |author| %>
-            <%= link_to author.full_name, author_path(author.id), class: 'dropdown-item' %>
+            <%= link_to author.full_name, author_path(author.id), class: 'dropdown-item', "data-author-id": author.id  %>
           <% end %>
           <div class="dropdown-divider"></div>
           <%= link_to 'Index', authors_path, class: 'dropdown-item' %>
