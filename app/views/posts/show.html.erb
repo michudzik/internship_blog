@@ -1,33 +1,38 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
-<p><%= link_to 'Edit', edit_post_path(@post.id) %></p>
+<div class="jumbotron text-center">
+  <h1><%= @post.title %></h1>
+</div>
+<div class="container post">
+  <div class="post-content">
+      <p><%= @post.content %></p>
+        ~ <%= link_to @post.author.full_name, author_path(@post.author_id) %>
+    <div class="row">
+        <%= link_to 'Edit', edit_post_path(@post.id), role: 'button', class: 'post-btn-edit btn btn-primary col-md-2 offset-md-10' %>
+    </div>
+  </div>
+</div>
 
-<h2>Author info:</h2>
-<p>
-  <%= link_to @post.author.full_name, author_path(@post.author_id) %>
-</p>
-<hr/>
+
 <% if @post.comments.any? %>
-  <h2>Comment section</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Author</th>
-        <th>Comment</th>
-      </tr>
-    </thead>
-    <% @post.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.commentator.name %></td>
-        <td><%= comment.content %></td>
-        <td><%= link_to 'Delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
+  <div class="container commentSection">
+    <h3>Comment section</h3>
+    <div class="row commentSection-headings">
+      <div class="col-md-2">Author</div>
+      <div class="col-md-10">Comment</div>
+  </div>
+  <% @post.comments.each do |comment| %>
+    <div class="row">
+      <div class="col-md-2"><%= comment.commentator.name %></div>
+      <div class="col-md-9"><%= comment.content %></div>
+      <div class="col-md-1"><%= link_to 'Delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' }, role: 'button', class: 'btn btn-danger' %></div>
+    </div>
+  <% end %>
+  </div>
 <% end %>
-<hr/>
-
-<h3>Add comment</h3>
-<%= render 'comments/form', object: @comment, errors: @comment_errors, locals: { post_id: @post.id, commentators: @commentators } %>
-<hr/>
+<div class="container">
+  <div class="commentSection-add">
+    <h3>Add comment</h3>
+    <%= render 'comments/form', object: @comment, errors: @comment_errors, locals: { post_id: @post.id, commentators: @commentators } %>
+    <hr/>
+  </div>
+</div>
 <%= link_to 'Back', posts_path %>
