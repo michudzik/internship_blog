@@ -1,13 +1,17 @@
+<div class="jumbontron text-center">
 <h1><%= @author.full_name %></h1>
+</div>
 
-
+<div class="container">
 <p>
   <%= "Aged: #{@author.age}" %>
   <hr/>
   Created at: <%= @author.created_at %>
   Updated at: <%= @author.updated_at %>
 </p>
+</div>
 
+<div class="container">
 <% if @posts.any? %>
   <h2>Posts</h2>
   <table>
@@ -15,10 +19,14 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= link_to 'Show', post_path(post.id) %></td>
+        <td><%= link_to 'Show', post_path(post.id), role: 'button', class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
-  <table>
+  </table>
 <% end %>
 <hr/>
-<%= link_to 'Back', authors_path %>
+</div>
+
+<div class="container">
+  <%= link_to 'Back', authors_path, role: 'button', class: 'btn btn-primary' %>
+</div>
