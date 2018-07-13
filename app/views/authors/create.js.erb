@@ -1,8 +1,7 @@
 <% if @author.persisted? %>
   $('.authors').append('<%= j render 'author', author: @author %>');
 <% else %>
-  alert('ogarnij sie');
-  alert('<%= j @author.errors.full_messages.join(', ') %>');
+  $('.new-author').replaceWith('<%= j render 'form' %>');
 <% end %>
 
 $('.new-author').find('input[type="text"], input[type="number"]').val('');
