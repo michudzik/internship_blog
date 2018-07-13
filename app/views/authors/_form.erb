@@ -12,16 +12,16 @@
 <!-- remote: true - enable ajax asynchronous -->
 <%= form_for @author, remote: true, html: { class: 'new-author' } do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, class: 'form-control' %>
   <br/>
 
   <%= f.label :surname %>
-  <%= f.text_field :surname %>
+  <%= f.text_field :surname, class: 'form-control' %>
   <br/>
 
   <%= f.label :age %>
-  <%= f.number_field :age %>
+  <%= f.number_field :age, class: 'form-control' %>
   <br/>
 
-  <%= f.submit 'Save' %>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

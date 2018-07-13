@@ -11,7 +11,11 @@
 </div>
 <hr/>
 
-<%= render 'form' %>
+<div class="container">
+  <%= render 'form' %>
+</div>
 
 <hr/>
-<%= link_to 'New', new_author_path %>
+<div class="container">
+  <%= link_to 'New', new_author_path, role: 'button', class: 'btn btn-primary' %>
+</div>
