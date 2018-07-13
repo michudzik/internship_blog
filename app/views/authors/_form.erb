@@ -1,9 +1,11 @@
 <% if @author.errors.any? %>
-  <ul>
-    <% @author.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+  <div class="alert alert-danger">
+    <ul>
+      <% @author.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <!-- form_for allows to work with an object -->

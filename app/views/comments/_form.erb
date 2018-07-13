@@ -1,9 +1,11 @@
-<% if @comment.errors.any? %>
-  <ul>
-    <% @comment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+<% if errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <%= form_for @comment do |f| %>

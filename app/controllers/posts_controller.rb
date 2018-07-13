@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @commentators = Commentator.all
+    if params[:errors]
+      @comment_errors = params[:errors]
+    else
+      @comment_errors = {}
+    end
   end
 
   def new
