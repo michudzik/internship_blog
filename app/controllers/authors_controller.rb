@@ -2,6 +2,7 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = Author.all
+    @author = Author.new
   end
 
   def show
@@ -15,11 +16,13 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new(author_params)
-    if @author.save
-      redirect_to authors_url, notice: 'Author has been created'
-    else
-      render :new
-    end
+    # if @author.save
+    #   redirect_to authors_url, notice: 'Author has been created'
+    # else
+    #   render :new
+    # end
+    @author.save
+
   end
 
   def edit 
