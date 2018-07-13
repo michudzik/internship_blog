@@ -1,15 +1,15 @@
-<h1>Commentators</h1>
+<div class="jumbotron text-center">
+  <h1>Commentators</h1>
+</div>
 
-<table class="table">
-  <% if @commentators.any? %>
-    <% @commentators.each do |commentator| %>
-      <tr>
-        <td><%= commentator.name %></td>
-        <td><%= link_to 'Delete', commentator_path(commentator.id), method: :delete , data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+<div class="container">
+  <% @commentators.each do |commentator| %>
+    <div class="row">
+      <div class="col-sm-12 col-md-6"><%= commentator.name %></div>
+      <div class="col-sm-12 col-md-6"><%= link_to 'Delete', commentator_path(commentator.id), method: :delete , data: { confirm: 'Are you sure?' }, role: 'button', class: 'btn btn-danger' %></div>
+    </div>
   <% end %>
-</table>
+</div>
 <hr/>
 
 <%= link_to "New", new_commentator_path %>

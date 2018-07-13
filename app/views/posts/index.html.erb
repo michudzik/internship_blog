@@ -1,15 +1,17 @@
-<h1>List of posts</h1>
+<div class="jumbotron text-center">
+  <h1>List of posts</h1>
+</div>
 
-<table>
+<div class="container">
   <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.author.full_name %></td>
-      <td><%= link_to 'Show', post_path(post.id) %></td>
-      <td><%= link_to 'Edit', edit_post_path(post.id) %></td>
-      <td><%= link_to 'Delete', post_path(post.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <div class="row">
+      <div class="col-sm-12 col-md-3"><%= post.title %></div>
+      <div class="col-sm-12 col-md-3"><%= post.author.full_name %></div>
+      <div class="col-sm-12 col-md-2"><%= link_to 'Show', post_path(post.id), role: 'button', class: 'btn btn-primary' %></div>
+      <div class="col-sm-12 col-md-2"><%= link_to 'Edit', edit_post_path(post.id), role: 'button', class: 'btn btn-primary' %></div>
+      <div class="col-sm-12 col-md-2"><%= link_to 'Delete', post_path(post.id), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
   <% end %>
-</table>
+</div>
 <hr/>
 <%= link_to 'New', new_post_path %>
