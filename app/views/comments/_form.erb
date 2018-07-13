@@ -10,11 +10,12 @@
 
 <%= form_for @comment do |f| %>
   <%= f.label :commentator_id %>
-   <%= f.select :commentator_id, class: 'custom-select' do %>
+  <%= f.select :commentator_id do %>
     <% locals[:commentators].each do |commentator| %>
       <%= content_tag(:option, commentator.name, value: commentator.id) %>
     <% end %>
   <% end %>
+  <br/>
 
   <%= f.label :content %>
   <%= f.text_area :content, size: '24x6', class: 'form-control' %>
