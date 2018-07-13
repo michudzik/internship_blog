@@ -9,13 +9,11 @@
       <%= render 'author', author: author %>
   <% end %>
 </div>
-<hr/>
 
-<div class="container">
+<div class="container authors-add">
   <%= render 'form' %>
 </div>
 
-<hr/>
-<div class="container">
+<div class="container author-new">
   <%= link_to 'New', new_author_path, role: 'button', class: 'btn btn-primary' %>
 </div>
