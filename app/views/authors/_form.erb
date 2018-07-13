@@ -8,7 +8,7 @@
 
 <!-- form_for allows to work with an object -->
 <!-- remote: true - enable ajax asynchronous -->
-<%= form_for @author, remote: true do |f| %>
+<%= form_for @author, remote: true, html: { class: 'new-author' } do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br/>
