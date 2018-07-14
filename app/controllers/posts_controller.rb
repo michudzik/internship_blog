@@ -25,8 +25,8 @@ class PostsController < ApplicationController
     @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
     if @post.save
       redirect_to posts_url, notice: 'Post created'
-    else
-      render :new
+    else 
+      render :new 
     end
   end
 

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
-    title   'title'
-    content 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    title   { Faker::Lorem.characters(10) }
+    content 'Lorem ipsum'
     author
   end 
 end

@@ -13,7 +13,7 @@ class CommentatorsController < ApplicationController
     if @commentator.save
       redirect_to commentators_url, notice: 'Commentator added'
     else
-      redirect_to commentators_url, alert: 'Something went wrong'
+      render :new
     end
   end
 
