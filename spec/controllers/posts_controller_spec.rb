@@ -105,4 +105,64 @@ RSpec.describe PostsController, type: :controller do
 
   end
 
+  describe '#update' do
+    let(:post) { create(:post) }
+    let(:valid_parameters) { { id: post.id, post: { title: 'valid' } } }
+    let(:invalid_parameters) { { id: post.id, post: { title: nil } } }
+
+    context 'valid params' do
+      subject { patch :update, params: valid_parameters }
+
+      it 'should redirect to post index' do
+        expect(subject).to redirect_to(posts_url)
+      end
+
+      it 'should redirect with a notice' do
+        subject
+        expect(flash[:notice]).to be_present
+      end
+
+      it 'should change post\'s title' do
+        subject
+        expect(post.reload.title).to eq('valid')
+      end
+
+    end
+
+    context 'invalid params' do
+      subject { patch :update, params: invalid_parameters }
+
+      it 'should render edit template' do
+        expect(subject).to render_template('edit')
+      end
+
+      it 'should not change post\'s title' do
+        subject
+        expect(post.reload.title).not_to eq('valid')
+      end
+
+    end
+
+  end
+
+  describe '#destroy' do
+    let(:post) { create(:post) }
+    subject { delete :destroy, params: { id: post.id } }
+
+    it 'should redirect to post index' do
+      expect(subject).to redirect_to(posts_url)
+    end
+
+    it 'should redirect with a notice' do
+      subject
+      expect(flash[:notice]).to be_present
+    end
+
+    it 'should change post count' do
+      post_id = post.id
+      expect{ delete :destroy, params: { id: post_id } }.to change{ Post.count }.by(-1)
+    end
+
+  end
+
 end
