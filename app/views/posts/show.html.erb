@@ -14,7 +14,7 @@
 
 <% if @post.comments.any? %>
   <div class="container commentSection">
-    <h3>Comment section</h3>
+    <h3 class="commentSection-title">Comment section</h3>
     <div class="row commentSection-headings">
       <div class="col-md-2">Author</div>
       <div class="col-md-10">Comment</div>
@@ -30,7 +30,7 @@
 <% end %>
 <div class="container">
   <div class="commentSection-add">
-    <h3>Add comment</h3>
+    <h3 class="commentSection-title">Add comment</h3>
     <%= render 'comments/form', object: @comment, errors: @comment_errors, locals: { post_id: @post.id, commentators: @commentators } %>
     <hr/>
   </div>
