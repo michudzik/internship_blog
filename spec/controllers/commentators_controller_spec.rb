@@ -73,6 +73,7 @@ RSpec.describe CommentatorsController, type: :controller do
     end
 
   end
+  
   describe 'destroy' do
     let(:commentator) { create(:commentator) }
     subject { delete :destroy, params: { id: commentator.id } }
