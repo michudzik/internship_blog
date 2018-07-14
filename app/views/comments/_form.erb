@@ -9,15 +9,15 @@
 <% end %>
 
 <%= form_for @comment do |f| %>
-  <%= f.label :commentator_id %>
-  <%= f.select :commentator_id do %>
-    <% locals[:commentators].each do |commentator| %>
-      <%= content_tag(:option, commentator.name, value: commentator.id) %>
-    <% end %>
-  <% end %>
-  <br/>
 
-  <%= f.label :content %>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <%= f.label :commentator_id, class: 'input-group-text' %>
+    </div>
+    <%= f.select :commentator_id, locals[:commentators].all.map { |p| [p.name, p.id] }, {}, class: 'custom-select' %>
+  </div>
+
+  <%= f.label :content, class: 'input-group-text' %>
   <%= f.text_area :content, size: '24x6', class: 'form-control' %>
 
   <%= f.hidden_field(:post_id, value: locals[:post_id]) %>
