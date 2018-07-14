@@ -73,4 +73,23 @@ RSpec.describe CommentatorsController, type: :controller do
     end
 
   end
+  describe 'destroy' do
+    let(:commentator) { create(:commentator) }
+    subject { delete :destroy, params: { id: commentator.id } }
+
+    it 'should redirect to commentator\'s index' do
+      expect(subject).to redirect_to(commentators_url)
+    end
+
+    it 'should redirect with a notice' do
+      subject
+      expect(flash[:notice]).to be_present
+    end
+
+    it 'should change commentator\'s count' do
+      commentator_id = commentator.id
+      expect{ delete :destroy, params: { id: commentator_id } }.to change{ Commentator.count }.by(-1)
+    end
+  end
+  
 end
