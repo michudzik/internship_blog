@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# Tasks
+
+* Improve author's show view
+* Add js to comment section 
+* Refine error messagesf
