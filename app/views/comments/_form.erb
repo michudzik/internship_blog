@@ -14,7 +14,7 @@
     <div class="input-group-prepend">
       <%= f.label :commentator_id, class: 'input-group-text' %>
     </div>
-    <%= f.select :commentator_id, locals[:commentators].all.map { |p| [p.name, p.id] }, {}, class: 'custom-select' %>
+    <%= f.select :commentator_id, locals[:commentators].all.map { |commentator| [commentator.name, commentator.id] }, {}, class: 'custom-select' %>
   </div>
 
   <%= f.label :content, class: 'input-group-text' %>
