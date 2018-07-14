@@ -2,3 +2,18 @@
   text-transform: uppercase;
   letter-spacing: -1px;
 }
+
+.nav-item {
+  border-radius: 5px;
+  transition: 0.3s background-color;
+  &:hover {
+    background-color: #ccc;
+  }
+}
+
+.nav-link {
+  transition: 0.3s color;
+  &:hover {
+    color: #000 !important;
+  }
+}
