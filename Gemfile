@@ -67,7 +67,7 @@ group :test do
 
 
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'rails-controllers-testing'
+  gem 'rails-controller-testing'
 end
 
 group :production do
