@@ -1,4 +1,4 @@
-<div data-author-id="<%= author.id %>" class="row">
+<div data-author-id="<%= author.id %>" class="row author">
     <div class="col-sm-12 col-md-8"><%= link_to author.full_name, author_path(id: author.id) %></div>
     <div class="col-sm-12 col-md-2"><%= link_to 'Edit', edit_author_path(id: author.id), role: 'button', class: 'btn btn-primary' %></div>
     <div class="col-sm-12 col-md-2"><%= link_to 'Delete', author_path(id: author.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, role: 'button', class: 'btn btn-danger' %></div>
