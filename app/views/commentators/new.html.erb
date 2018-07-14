@@ -1,10 +1,14 @@
-<h1>Add commentator</h1>
+<div class="container commentator">
+  <h1>Add commentator</h1>
 
-<%= form_for @commentator do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= form_for @commentator do |f| %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <%= f.label :name, class: 'input-group-text' %>
+      </div>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <%= f.submit %>
-<% end %>
-<hr/>
-<%= link_to 'Back', commentators_path %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
