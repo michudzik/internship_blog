@@ -28,3 +28,9 @@ Things you may want to cover:
 * Improve author's show view[DONE]
 * Add js to comment section[DONE] 
 * Refine error messages[DONE]
+* Add controller's tests
+  - authors_controller[DONE]
+  - comments_controller[DONE]
+  - posts_controller[DONE]
+  - commentators_controller[DONE]
+* Find how to test js action's (maybe add remote: true?)
