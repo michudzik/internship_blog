@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
     if @post.save
       redirect_to posts_url, notice: 'Post created'
     else
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
     if @post.update(post_params)
       redirect_to posts_url, notice: 'Post has been updated'
     else

@@ -25,6 +25,6 @@ Things you may want to cover:
 
 # Tasks
 
-* Improve author's show view
-* Add js to comment section 
-* Refine error messagesf
+* Improve author's show view[DONE]
+* Add js to comment section[DONE] 
+* Refine error messages[DONE]

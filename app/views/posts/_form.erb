@@ -1,5 +1,5 @@
 <% if @post.errors.any? %>
-  <div class="alert alert-danger">
+  <div class="error_explanation alert alert-danger">
     <ul>
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -21,7 +21,7 @@
     <div class="input-group-prepend">
       <%= f.label :author_id, class: 'input-group-text' %>
     </div>
-    <%= f.select :author_id, @authors, {}, class: 'custom-select' %>
+    <%= f.select :author_id, authors, {}, class: 'custom-select' %>
   </div>
   <br/>
 
