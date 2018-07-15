@@ -7,6 +7,12 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    if @post.comments.any?
+      @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
+    else
+      @comments = nil
+    end
+
     @commentators = Commentator.all
     if params[:errors]
       @comment_errors = params[:errors]

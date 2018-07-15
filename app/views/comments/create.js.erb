@@ -1,7 +1,7 @@
 <% if @comment.post.comments.count == 1 %>
-  $('.commentSection').replaceWith('<%= j render 'posts/comment_section', post: @comment.post %>');
+  $('.commentSection').replaceWith('<%= j render 'posts/comment_section', comments: @comment.post.comments %>');
 <% else %>
-  $('.commentSection').append('<%= j render 'posts/comment', comment: @comment %>');
+  $('.commentSection-comments').prepend('<%= j render 'posts/comment', comment: @comment %>');
 <% end %>
 $('.error_explanation').fadeOut(1000);
 $("textarea").val('');

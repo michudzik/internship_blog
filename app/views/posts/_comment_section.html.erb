@@ -1,12 +1,14 @@
 <div class="container commentSection">
-  <% if post.comments.any? %>
+  <% unless comments.nil? %>
       <h3 class="commentSection-title">Comment section</h3>
       <div class="row commentSection-headings">
         <div class="col-md-2">Author</div>
         <div class="col-md-10">Comment</div>
     </div>
-    <% post.comments.each do |comment| %>
-      <%= render 'posts/comment', comment: comment %>
-    <% end %>
+    <div class="commentSection-comments">
+      <% comments.each do |comment| %>
+        <%= render 'posts/comment', comment: comment %>
+      <% end %>
+    </div>
   <% end %>
 </div>
