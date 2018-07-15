@@ -11,7 +11,7 @@ class Author < ActiveRecord::Base
 
   #has_many :author_posts
   #has_many :posts, through: :author_posts, dependent: :destroy
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   def full_name 
     "#{self.name} #{self.surname}"
