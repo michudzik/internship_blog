@@ -46,11 +46,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    if post.destroy
-      redirect_to posts_url, notice: 'Post deleted'
-    else
-      redirect_to posts_url, alert: 'Could not delete post'
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      if @post.destroy
+        format.html { redirect_to posts_url, notice: 'Post deleted' }
+        format.js
+      else
+        format.html { redirect_to posts_url, alert: 'Could not delete post' }
+      end
     end
   end
 

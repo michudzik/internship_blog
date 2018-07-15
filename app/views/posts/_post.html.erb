@@ -1,0 +1,7 @@
+<div data-post-id="<%= post.id %>" class="row singlePost">
+    <div class="col-sm-12 col-md-3"><%= post.title %></div>
+    <div class="col-sm-12 col-md-3"><%= post.author.full_name %></div>
+    <div class="col-sm-12 col-md-2"><%= link_to 'Show', post_path(post.id), role: 'button', class: 'btn btn-primary' %></div>
+    <div class="col-sm-12 col-md-2"><%= link_to 'Edit', edit_post_path(post.id), role: 'button', class: 'btn btn-primary' %></div>
+    <div class="col-sm-12 col-md-2"><%= link_to 'Delete', post_path(post.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, role: 'button', class: 'btn btn-danger' %></div>
+</div>
