@@ -40,7 +40,7 @@ RSpec.describe Author, type: :model do
   end
   
   describe 'relations' do
-    it { should have_many(:posts) }
+    it { should have_many(:posts).dependent(:destroy) }
   end
   
   describe '#fullname' do

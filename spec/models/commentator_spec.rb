@@ -13,7 +13,7 @@ RSpec.describe Commentator, type: :model do
   end
 
   describe 'relations' do
-    it { should have_many(:comments) }
+    it { should have_many(:comments).dependent(:destroy) }
   end
 
 end
