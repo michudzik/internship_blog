@@ -1,3 +1,7 @@
-$('.commentSection').append('<%= j render 'posts/comment', comment: @comment %>');
-$('.error_explanation').css("display", "none");
+<% if @comment.post.comments.count == 1 %>
+  $('.commentSection').replaceWith('<%= j render 'posts/comment_section', post: @comment.post %>');
+<% else %>
+  $('.commentSection').append('<%= j render 'posts/comment', comment: @comment %>');
+<% end %>
+$('.error_explanation').fadeOut(1000);
 $("textarea").val('');
