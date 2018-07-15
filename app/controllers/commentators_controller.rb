@@ -18,11 +18,14 @@ class CommentatorsController < ApplicationController
   end
 
   def destroy
-    commentator = Commentator.find(params[:id])
-    if commentator.destroy
-      redirect_to commentators_url, notice: 'Commentator deleted' 
-    else
-      redirect_to commentators_url, alert: 'Something went wrong'
+    @commentator = Commentator.find(params[:id])
+    respond_to do |format|
+      if @commentator.destroy
+        format.html { redirect_to commentators_url, notice: 'Commentator deleted' }
+        format.js
+      else
+        format.html { redirect_to commentators_url, alert: 'Something went wrong' } 
+      end
     end
   end
 
