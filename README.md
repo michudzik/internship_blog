@@ -10,8 +10,8 @@
   - commentators_controller     [DONE]
 * Find how to test js action's (maybe add remote: true?)
 * Add JS to destroy actions:
-  - posts_controller            []
-  - commentator_controller      []
+  - posts_controller            [DONE]
+  - commentator_controller      [DONE]
 
 # README
 
