@@ -1,3 +1,18 @@
+# Tasks
+
+* Improve author's show view    [DONE]
+* Add js to comment section     [DONE] 
+* Refine error messages         [DONE]
+* Add controller's tests
+  - authors_controller          [DONE]
+  - commentators_controller     [DONE]
+  - posts_controller            [DONE]
+  - commentators_controller     [DONE]
+* Find how to test js action's (maybe add remote: true?)
+* Add JS to destroy actions:
+  - posts_controller            []
+  - commentator_controller      []
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,15 +37,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-# Tasks
-
-* Improve author's show view[DONE]
-* Add js to comment section[DONE] 
-* Refine error messages[DONE]
-* Add controller's tests
-  - authors_controller[DONE]
-  - comments_controller[DONE]
-  - posts_controller[DONE]
-  - commentators_controller[DONE]
-* Find how to test js action's (maybe add remote: true?)
