@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# Bootstrap
+gem 'bootstrap', '~> 4.1.1'
+# JQuery
+gem 'jquery-rails'
 # html templates for rails 
 gem 'haml', '~> 5.0', '>= 5.0.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
