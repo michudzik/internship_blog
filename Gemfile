@@ -5,8 +5,6 @@ ruby '2.5.1'
 
 # html templates for rails 
 gem 'haml', '~> 5.0', '>= 5.0.4'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use Puma as the app server

@@ -1,0 +1,14 @@
+- content_for :title, "Blog | Author - Index"
+
+.jumbotron.text-center
+  %h1 Index of Authors
+
+.container.authors
+  - @authors.each do |author|
+    = render 'author', author: author
+
+.container.authors-add
+  = render 'form'
+
+.container.author-new
+  = link_to 'New', new_author_path, role: 'button', class: 'btn btn-primary'
