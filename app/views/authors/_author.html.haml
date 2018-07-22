@@ -1,4 +1,4 @@
-.row.author{ 'data-author-id': '<%= author.id %>' }
+.row.author{ 'data-author-id': "#{author.id}" }
   .col-sm-12.col-md-8
     = link_to author.full_name, author_path(id: author.id)
   .col-sm-12.col-md-2
