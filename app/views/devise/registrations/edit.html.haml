@@ -1,0 +1,62 @@
+.container
+  .registrations.row
+    .col-md-6.offset-md-3
+      %h2.registrations-header
+        Edit
+        = current_user.full_name
+      .registrations-form
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          = devise_error_messages!
+
+          .registrations-personalData
+            .registrations-field
+              = f.label :first_name, class: 'registrations-label'
+              = f.text_field :first_name, class: 'form-control'
+
+            .registrations-field
+              = f.label :last_name, class: 'registrations-label'
+              = f.text_field :last_name, class: 'form-control'
+
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                %div
+                  Currently waiting confirmation for:
+                  = resource.unconfirmed_email
+
+          .registrations-password
+            .registrations-field
+              = f.label :password, class: 'registrations-label'
+              %i
+                (leave blank if you don't want to change it)
+              %br/
+              = f.password_field :password, autocomplete: 'off', class: 'form-control'
+              - if @minimum_password_field
+                %br/
+                %em
+                  = @minimum_password_length
+                  characters minimum
+
+            .registrations-field
+              = f.label :password_confirmation, class: 'registrations-label'
+              = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+
+            .registrations-field
+              = f.label :current_password, class: 'registrations-label'
+              %i
+                (we need your current password to confirm your changes)
+              %br/
+              = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
+
+          .actions
+            = f.submit 'Update', class: 'registrations-button btn btn-primary btn-block'
+
+.container
+  .registrations.row
+    .col-md-6.offset-md-3
+      %h3.registrations-header
+        Cancel my account
+      %p
+        Unhappy?
+        = button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' },
+         method: :delete, class: 'btn btn-primary btn-block'
+
+      = link_to 'Back', :back, class: 'btn btn-primary'

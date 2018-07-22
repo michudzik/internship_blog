@@ -10,17 +10,12 @@
         = link_to root_path, class: 'nav-link' do
           Home
           = content_tag(:span, '(current)', class: 'sr-only')
-      %li.nav-item.dropdown
-        %a.nav-link.dropdown-toggle#navbarDropdown{ href: '#', role: 'button', 'data-toggle': 'dropdown',
-         'aria-hashpopup': true, 'aria-expanded': 'false' }
-          Authors
-        .dropdown-menu{ 'aria-labelledby': 'navbarDropdown' }
-          - Author.all.each do |author|
-            = link_to author.full_name, author_path(author.id), class: 'dropdown-item', 'data-author-id': author.id
-          .dropdown-divider
-          = link_to 'Index', authors_path, class: 'dropdown-item'
-          = link_to 'New', new_author_path, class: 'dropdown-item'
-      %li.nav-item
-        = link_to 'Posts', posts_path, class: 'nav-link'
-      %li.nav-item
-        = link_to 'Commentators', commentators_path, class: 'nav-link'
+      - if user_signed_in?
+        %li.nav-item.dropdown.active
+          %a.nav-link.dropdown-toggle#navbarDropdown{ role: 'button', 'data-toggle': 'dropdown',
+           'aria-hashpopup': 'true', 'aria-expanded': 'false' }
+            Settings
+          .dropdown-menu{ 'aria-labelledby': 'navbarDropdown' }
+            = link_to 'Account', edit_user_registration_path, class: 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'

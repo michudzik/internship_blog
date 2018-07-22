@@ -1,7 +1,0 @@
-<% if @author.persisted? %>
-  $('.authors').append('<%= j render 'author', author: @author %>');
-<% else %>
-  $('.new-author').replaceWith('<%= j render 'form' %>');
-<% end %>
-
-$('.new-author').find('input[type="text"], input[type="number"]').val('');

@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe CommentsController, type: :controller do
   
   describe '#create' do
-    let(:commentator)         { create(:commentator) }
+    let(:user)         { create(:user) }
     let(:post_object)                { create(:post) }
-    let(:valid_parameters)    { { comment: attributes_for(:comment, commentator_id: commentator.id, post_id: post_object.id) } }
-    let(:invalid_parameters)  { { comment: attributes_for(:comment, commentator_id: nil, post_id: post_object.id) } }
-
+    let(:valid_parameters)    { { comment: attributes_for(:comment, user_id: user.id, post_id: post_object.id) } }
+    let(:invalid_parameters)  { { comment: attributes_for(:comment, user_id: nil, post_id: post_object.id) } }
+    before { sign_in user }
     context 'valid params' do
       subject { post :create, params: valid_parameters }
 

@@ -1,0 +1,38 @@
+.container
+  .registrations.row
+    .col-md-6.offset-md-3
+      %h2.registrations-header Sign up
+      .registrations-form
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .registrations-personalData
+            .registrations-field
+              = f.label :first_name, class: 'registrations-label'
+              = f.text_field :first_name, placeholder: 'Jan', class: 'form-control'
+
+            .registrations-field
+              = f.label :last_name, class: 'registrations-label'
+              = f.text_field :last_name, placeholder: 'Kowalski', class: 'form-control'
+
+            .registrations-field
+              = f.label :email, class: 'registrations-label'
+              = f.email_field :email, autofocus: true, autocomplete: 'email',
+               placeholder: 'example@example.com', class: 'form-control'
+
+          .registrations-password
+            .registrations-field
+              = f.label :password, class: 'registrations-label'
+              - if @minimum_password_length
+                %em
+                  (
+                  = @minimum_password_length
+                  characters minimum)
+                %br/
+              = f.password_field :password, autocomplete: 'off', class: 'form-control'
+
+            .registrations-field
+              = f.label :password_confirmation, class: 'registrations-label'
+              = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+
+          .actions
+            = f.submit 'Sign up', class: 'registrations-button btn btn-primary btn-block'

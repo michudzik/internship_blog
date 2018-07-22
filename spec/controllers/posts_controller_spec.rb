@@ -68,8 +68,8 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe '#create' do
-    let(:author) { create(:author) }
-    let(:valid_parameters)    { { post: attributes_for(:post, author_id: author.id) } }
+    let(:user) { create(:user) }
+    let(:valid_parameters)    { { post: attributes_for(:post, author_id: user.id) } }
     let(:invalid_parameters)  { { post: attributes_for(:post, title: nil) } }
 
     context 'valid params' do
