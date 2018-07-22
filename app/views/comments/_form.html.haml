@@ -2,14 +2,15 @@
   .error_explanation.alert.alert-danger
     %ul
       - errors.each do |msg|
-        %li 
+        %li
         = msg
 
 = form_for @comment, remote: true do |f|
   .input-group.mb-3
     .input-group-prepend
       = f.label :commentator_id, class: 'input-group-text'
-    = f.select :commentator_id, locals[:commentators].all.map { |commentator| [commentator.name, commentator.id] }, {}, class: 'custom-select'
+    = f.select :commentator_id, locals[:commentators].all.map { |commentator| [commentator.name, commentator.id] },
+     {}, class: 'custom-select'
 
   = f.label :content, class: 'input-group-text'
   = f.text_area :content, size: '24x6', class: 'form-control'

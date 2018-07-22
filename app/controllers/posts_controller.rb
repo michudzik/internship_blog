@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.all
   end
@@ -7,43 +6,34 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    if @post.comments.any?
-      @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
-    else
-      @comments = nil
-    end
-
+    @comments ||= Comment.where(post_id: params[:id]).order(created_at: :asc)
     @commentators = Commentator.all
-    if params[:errors]
-      @comment_errors = params[:errors]
-    else
-      @comment_errors = {}
-    end
+    @comment_errors = params[:errors] || {}
   end
 
   def new
     @post = Post.new
-    @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
+    @authors = Author.all.collect { |author| [author.full_name, author.id] }
   end
 
   def create
     @post = Post.new(post_params)
-    @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
+    @authors = Author.all.collect { |author| [author.full_name, author.id] }
     if @post.save
       redirect_to posts_url, notice: 'Post created'
-    else 
-      render :new 
+    else
+      render :new
     end
   end
 
   def edit
     @post = Post.find(params[:id])
-    @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
+    @authors = Author.all.collect { |author| [author.full_name, author.id] }
   end
 
   def update
     @post = Post.find(params[:id])
-    @authors = Author.all.collect { |author| [ author.full_name, author.id ] }
+    @authors = Author.all.collect { |author| [author.full_name, author.id] }
     if @post.update(post_params)
       redirect_to posts_url, notice: 'Post has been updated'
     else
@@ -65,8 +55,7 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :content, :author_id)
-    end
-
+  def post_params
+    params.require(:post).permit(:title, :content, :author_id)
+  end
 end

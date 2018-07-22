@@ -1,4 +1,4 @@
-.row.commentSection-comment{"data-comment-id": "<%= comment.id %>"}
+.row.commentSection-comment{ 'data-comment-id': '<%= comment.id %>' }
   .col-md-2
     = comment.commentator.name
   .col-md-6
@@ -6,4 +6,5 @@
   .col-md-3
     = comment.created_at
   .col-md-1
-    = link_to 'Delete', comment_path(comment.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, role: 'button', class: 'btn btn-danger'
+    = link_to 'Delete', comment_path(comment.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' },
+    role: 'button', class: 'btn btn-danger'

@@ -1,5 +1,5 @@
 class Author < ActiveRecord::Base
-  #has_one :post
+  # has_one :post
   validates :name,      presence:     true
   validates :surname,   presence:     true
   validates :age,       numericality: { only_integer: true, greater_than: 0, allow_nil: true }
@@ -9,18 +9,17 @@ class Author < ActiveRecord::Base
 
   before_create :default_age
 
-  #has_many :author_posts
-  #has_many :posts, through: :author_posts, dependent: :destroy
+  # has_many :author_posts
+  # has_many :posts, through: :author_posts, dependent: :destroy
   has_many :posts, dependent: :destroy
 
-  def full_name 
-    "#{self.name} #{self.surname}"
+  def full_name
+    "#{name} #{surname}"
   end
 
   private
 
-    def default_age
-      self.age = 25 unless age
-    end
-
+  def default_age
+    self.age = 25 unless age
+  end
 end

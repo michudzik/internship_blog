@@ -1,5 +1,4 @@
 class CommentatorsController < ApplicationController
-
   def index
     @commentators = Commentator.all
   end
@@ -24,15 +23,14 @@ class CommentatorsController < ApplicationController
         format.html { redirect_to commentators_url, notice: 'Commentator deleted' }
         format.js
       else
-        format.html { redirect_to commentators_url, alert: 'Something went wrong' } 
+        format.html { redirect_to commentators_url, alert: 'Something went wrong' }
       end
     end
   end
 
   private
 
-    def commentator_params
-      params.require(:commentator).permit(:name)
-    end
-
+  def commentator_params
+    params.require(:commentator).permit(:name)
+  end
 end

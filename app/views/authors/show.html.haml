@@ -1,17 +1,17 @@
 - content_for :title, 'Blog | Author - Show'
 
 .jumbotron.text-center
-  %h1 
+  %h1
     = @author.full_name
 
 .container.authors-info
   %p
-    = "Aged: #{@author.age}"
+    Aged: #{@author.age}
     %br
-    Created at: 
+    Created at:
     = @author.created_at
     %br
-    Updated at: 
+    Updated at:
     = @author.updated_at
 
 .container.authors-posts

@@ -1,5 +1,4 @@
 class AuthorsController < ApplicationController
-
   def index
     @authors = Author.all
     @author = Author.new
@@ -10,7 +9,7 @@ class AuthorsController < ApplicationController
     @posts = @author.posts
   end
 
-  def new 
+  def new
     @author = Author.new
   end
 
@@ -26,7 +25,7 @@ class AuthorsController < ApplicationController
     end
   end
 
-  def edit 
+  def edit
     @author = Author.find(params[:id])
   end
 
@@ -54,8 +53,7 @@ class AuthorsController < ApplicationController
 
   private
 
-    def author_params
-      params.require(:author).permit(:name, :surname, :age)
-    end
-
+  def author_params
+    params.require(:author).permit(:name, :surname, :age)
+  end
 end
