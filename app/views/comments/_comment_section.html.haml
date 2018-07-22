@@ -1,0 +1,12 @@
+.container.commentSection
+  - unless comments.nil?
+    %h3.commentSection-title
+      Comment section
+    .row.commentSection-headings
+      .col-md-2
+        Author
+      .col-md-10
+        Comment
+    .commentSection-comments
+      - comments.each do |comment|
+        = render 'comments/comment', comment: comment
